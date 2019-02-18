@@ -2,9 +2,10 @@
 ---
 # Connect to existing EC2 Instance
 - name: Prep EC2 Instance
-  hosts: all
+  hosts: aws
   gather_facts: false
   connection: local
+  become_user: root
   tasks:
     # - name: Update and upgrade apt packages
     #   become: true
@@ -19,15 +20,15 @@
     - name: Pip3 Installation
       command: pip3 install virtualenv
     
-    - name: Create Project Folder
-      become: true
-      file:
-        path: /flaskproject
-        state: directory
+    # - name: Create Project Folder
+    #   become: true
+    #   file:
+    #     path: /flaskproject
+    #     state: directory
     
     - name: VirtualEnv Installation
       command: cd flaskproject
-      command: virtualenv venv --python=python3
+      command: virtualenv venv # --python=python3
       
     - name: Venv Power-Up  
       command: . venv/bin/activate
