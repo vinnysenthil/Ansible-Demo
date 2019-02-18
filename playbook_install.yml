@@ -1,0 +1,20 @@
+- hosts: EC2-Pizza
+  gather_facts: False
+
+  pre_tasks:
+  - name: install python 2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+ 
+  tasks:
+   - name: install Apache
+     yum:
+       name: httpd
+       state: latest
+
+   - name: start apache
+     service:
+       name: httpd
+       state: started
+       enabled: yes
+   - name: index.html copy
+     template: src=index.html.j2 dest=/var/www/html/index.html                                
