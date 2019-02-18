@@ -1,0 +1,9 @@
+- hosts: EC2-Pizza
+  gather_facts: False
+
+  tasks:
+   - name: stop apache
+     service:
+       name: httpd
+       state: stopped
+       enabled: yes                     
