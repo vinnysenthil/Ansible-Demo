@@ -1,5 +1,0 @@
-[local]
-127.0.0.1:80    ansible_connection=local
-
-[aws]
-54.153.93.131 ansible_user=ubuntu ansible_ssh_private_key_file=/Users/ph1mbp/Downloads/EC2_Ansible_2-16-2019.pem become_user=root
